@@ -1,0 +1,22 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#container {
+  height: 250px;
+  border: 2px dashed rgb(112, 109, 109);
+  border-radius: 20px;
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+#pickfiles {
+  font-size: 30px;
+  color: #aaa;
+  cursor: pointer;
+}
