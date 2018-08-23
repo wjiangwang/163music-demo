@@ -10,10 +10,45 @@
 </head>
 
 <body>
-    <div id=container>
-        <span id=pickfiles>点击或者拖曳上传...</span>
-        <div id="progressbar"></div>
+    <div class="page">
+        <aside class="musicList">
+            <div class="newSong">
+                新建歌曲
+            </div>
+            <ul>
+                <li>歌曲1</li>
+                <li>歌曲2</li>
+                <li class="active">歌曲3</li>
+                <li>歌曲4</li>
+                <li>歌曲5</li>
+                <li>歌曲6</li>
+                <li>歌曲7</li>
+            </ul>
+        </aside>
+        <main>
+            <div class="songMessage">
+                <form>
+                    <label>
+                        歌名
+                        <input type="text">
+                    </label>
+                    <label>
+                        歌手
+                        <input type="text">
+                    </label>
+                    <label>
+                        链接
+                        <input type="text">
+                    </label>
+                    <input type="button" value="提交">
+                </form>
+            </div>
+            <div id=container>
+                <span id=pickfiles>点击或者拖曳上传...</span>
+            </div>
+        </main>
     </div>
+
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
     <script src="../node_modules/leancloud-storage/dist/av-min.js"></script>
     <script src="../node_modules/qiniu-js/dist/qiniu.min.js"></script>
@@ -59,12 +94,12 @@
             // save_key: true,                  // 默认 false。若在服务端生成 uptoken 的上传策略中指定了 `save_key`，则开启，SDK在前端将不对key进行任何处理
             domain: 'http://pdum4yiea.bkt.clouddn.com',     // bucket 域名，下载资源时用到，如：'http://xxx.bkt.clouddn.com/' **必需**
             container: 'container',             // 上传区域 DOM ID，默认是 browser_button 的父元素，
-            max_file_size: '10mb',             // 最大文件体积限制
+            max_file_size: '40mb',             // 最大文件体积限制
             //flash_swf_url: 'path/of/plupload/Moxie.swf',  //引入 flash,相对路径
             // max_retries: 3,                     // 上传失败最大重试次数
             dragdrop: true,                     // 开启可拖曳上传
             drop_element: 'container',          // 拖曳上传区域元素的 ID，拖曳文件或文件夹后可触发上传
-            chunk_size: '4mb',                  // 分块上传时，每块的体积
+            //chunk_size: '4mb',                  // 分块上传时，每块的体积
             auto_start: true,                   // 选择文件后自动上传，若关闭需要自己绑定事件触发上传,
             //x_vars : {
             //    自定义变量，参考http://developer.qiniu.com/docs/v6/api/overview/up/response/vars.html
@@ -103,12 +138,14 @@
                     //  }
                     // 参考http://developer.qiniu.com/docs/v6/api/overview/up/response/simple-response.html
 
-                    // var domain = up.getOption('domain');
-                    // var res = parseJSON(info.response);
-                    // var sourceLink = domain + res.key; 获取上传成功后的文件的Url
+                    var domain = up.getOption('domain');
+                    var res = JSON.parse(info.response);
+                    var sourceLink = domain + '/' + encodeURIComponent(res.key); //获取上传成功后的文件的Url
+                    console.log(sourceLink)
+                    $('#songMessage').html(sourceLink)
                 },
                 'Error': function (up, err, errTip) {
-                    $('#container > #progressbar').html('上传失败，请重试')
+                    $('#container > #pickfiles').html('上传失败，请重试')
                     //上传出错时,处理相关的事情
                 },
                 'UploadComplete': function () {
