@@ -18,7 +18,7 @@
                 <input type="button" value="提交">
             </form>
     `,
-    render(date) {
+    render(data) {
       $(this.el).html(this.template);
     }
   };
@@ -28,6 +28,9 @@
       this.view = view;
       this.modle = modle;
       this.view.render(this.modle.date);
+      window.eventHub.on('upload',(data)=>{
+        console.log(data)
+      })
     }
   };
   control.init(view, modle);

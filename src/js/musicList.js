@@ -15,7 +15,7 @@
         <li>歌曲7</li>
     </ul>
     `,
-    render(date) {
+    render(data) {
       $(this.el).html(this.template);
     }
   };
@@ -24,7 +24,7 @@
       init(view,model){
         this.view=view
         this.model=model
-        this.view.render(this.model.date)
+        this.view.render(this.model.data)
       }
   }
   control.init(view,model)

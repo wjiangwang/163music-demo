@@ -84,8 +84,7 @@
                         var domain = up.getOption('domain');
                         var res = JSON.parse(info.response);
                         var sourceLink = domain + '/' + encodeURIComponent(res.key); //获取上传成功后的文件的Url
-                        console.log(sourceLink)
-                        $('#songMessage').html(sourceLink)
+                        window.eventHub.emit('upload',{link:sourceLink,songName:res.key})
                     },
                     'Error': function (up, err, errTip) {
                         $('#container > #pickfiles').html('上传失败，请重试')
