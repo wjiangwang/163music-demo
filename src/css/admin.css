@@ -15,7 +15,7 @@ ol,li{ list-style:none}
   height: 100vh;
 
 }
-.page >.musicList{
+.page >aside{
   width: 20%;
   border-right: 1px solid #ddd;
 }
@@ -42,7 +42,7 @@ border-radius: 6px;
 outline: none;
 
 }
-input[type=button] {
+input[type=submit] {
   margin-left: 130px;
   width: 60px;
   outline: none;
@@ -55,7 +55,7 @@ input[type=button] {
   padding: 5px 15px;
   cursor: pointer;
 }
-input[type=button]:hover {
+input[type=submit]:hover {
   background: #ab3c3c;
 }
 main{
@@ -65,23 +65,23 @@ main{
   flex-direction: column;
   flex-grow: 1;
 }
-.musicList{
+aside{
   text-align: left;
 }
-.musicList>.newSong{
+aside>.newSong{
   padding: 10px;
   font-size: 20px;
   text-align: center;
   border-bottom: 2px solid #999;
 }
-.musicList li{
+aside li{
   border-bottom: 1px solid #ddd;
   padding: 10px 30px; 
   margin-left: 10px;
   margin-right: 10px;
 }
-.musicList li.active{
- background-color: rgb(161, 155, 155);
+aside .active{
+ background-color:#efefef;
 }
 
 #container {
