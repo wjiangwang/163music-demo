@@ -23,7 +23,6 @@
           .html(songs.songName)
           .attr("song-id", songs.id);//添加歌曲 id 属性
       });
-      console.log(liList);
       liList.map(domLi => {
         $(this.el)
           .find("ul")

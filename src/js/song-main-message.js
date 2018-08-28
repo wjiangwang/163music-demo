@@ -25,13 +25,11 @@
         html = html.replace(`___${string}___`, data[string] || "");
       });
       $(this.el).html(html);
-      console.log('xxxxxxxxx')
-      console.log(data.id)
       if(data.id){
-        $(this.el).prepend('<p>歌曲信息</p>')
+        $(this.el).prepend('<h1>歌曲信息</h1>')
       }
       else{
-        $(this.el).prepend('<p>创建歌曲</p>')
+        $(this.el).prepend('<h1>创建歌曲</h1>')
       }
     }
   };
@@ -93,6 +91,7 @@
         this.view.render(data);
       })
       window.eventHub.on('newSong-active',(data)=>{//
+        
         this.view.render(data);
       })
     }

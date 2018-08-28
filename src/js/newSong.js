@@ -14,7 +14,9 @@
       $(this.el).removeClass("active");
     }
   };
-  let model = {};
+  let model = {
+    data:{}
+  };
   let control = {
     init(view, model) {
       this.view = view;
@@ -26,15 +28,21 @@
     bindEvents() {
       $(this.view.el).on("click", () => {
         this.view.active();
-        window.eventHub.emit("newSong-active");
+        let copyData=JSON.parse(JSON.stringify(this.model.data))
+        window.eventHub.emit("newSong-active",copyData);
       });
     },
     bindEventHub() {
       window.eventHub.on("upload", data => {
+        this.model.data=data
         this.view.active();
       });
       window.eventHub.on("listActive", data => {
         this.view.removeActive();
+        
+      });
+      window.eventHub.on("creatSongMessage", data => {
+          this.model.data={}
       });
     }
   };
