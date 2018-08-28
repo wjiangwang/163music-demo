@@ -6,7 +6,13 @@
       `,
       render(data) {
         $(this.el).html(this.template);
-      }
+      },
+      active(){
+        $(this.el).addClass('active')
+    },
+    removeActive(){
+      $(this.el).removeClass('active')
+  }
     };
     let model={}
     let control={
@@ -14,13 +20,22 @@
           this.view=view
           this.model=model
           this.view.render(this.model.data)
+          this.bindEvents()
           window.eventHub.on('upload',(data)=>{
-            this.active()
+            this.view.active()
+          })
+          window.eventHub.on('listActive',(songId)=>{
+            console.log(songId)
+            this.view.removeActive()
           })
         },
-        active(){
-            $(this.view.el).addClass('active')
-        }
+        bindEvents(){
+          $(this.view.el).on('click',()=>{
+            this.view.active()
+            window.eventHub.emit('newSong-active')
+          })
+        },
+
     }
     control.init(view,model)
   }
