@@ -32,7 +32,7 @@
 
       //$(this.el).html(this.template);
     },
-    removeActive() {
+    removeActive() {//去除所有 active(高亮) 
       $(this.el)
         .find(".active")
         .removeClass("active");
@@ -66,11 +66,19 @@
     },
     bindEvents() {
       $(this.view.el).on("click", "li", e => {
-        this.view.removeActive();
+        this.view.removeActive();//去除所有 active(高亮)   
         this.view.addActive(e.currentTarget);
-        console.log(e.currentTarget);
         let songId=e.currentTarget.getAttribute('song-id')
-        window.eventHub.emit('listActive',{'song-id':songId})
+        let data
+        let songs=this.model.data.songs
+        for(let i=0;i<songs.length;i++){
+          if(songs[i].id===songId){
+            data=songs[i]
+            break
+          }
+        }
+        let copyData=JSON.parse(JSON.stringify(data))
+        window.eventHub.emit('listActive',copyData)
       });
     },
     bindEventHub() {

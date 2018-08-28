@@ -25,6 +25,14 @@
         html = html.replace(`___${string}___`, data[string] || "");
       });
       $(this.el).html(html);
+      console.log('xxxxxxxxx')
+      console.log(data.id)
+      if(data.id){
+        $(this.el).prepend('<p>歌曲信息</p>')
+      }
+      else{
+        $(this.el).prepend('<p>创建歌曲</p>')
+      }
     }
   };
   let modle = {
@@ -56,10 +64,8 @@
       this.view = view;
       this.modle = modle;
       this.bindEvents();
+      this.bindEventhub()
       this.view.render(this.modle.data);
-      window.eventHub.on("upload", (data) => {
-        this.view.render(data);
-      });
     },
     bindEvents() {
       $(this.view.el).on("submit", "form", e => {
@@ -78,6 +84,17 @@
           window.eventHub.emit('creatSongMessage',object)
         });
       });
+    },
+    bindEventhub(){
+      window.eventHub.on("upload", (data) => {
+        this.view.render(data);
+      });
+      window.eventHub.on('listActive',(data)=>{//获取 歌单 被点击 歌曲的信息
+        this.view.render(data);
+      })
+      window.eventHub.on('newSong-active',(data)=>{//
+        this.view.render(data);
+      })
     }
   };
   control.init(view, modle);

@@ -1,42 +1,42 @@
 {
-    let view = {
-      el: ".page>aside>.newSong",
-      template: `
+  let view = {
+    el: ".page>aside>.newSong",
+    template: `
           新建歌曲
       `,
-      render(data) {
-        $(this.el).html(this.template);
-      },
-      active(){
-        $(this.el).addClass('active')
+    render(data) {
+      $(this.el).html(this.template);
     },
-    removeActive(){
-      $(this.el).removeClass('active')
-  }
-    };
-    let model={}
-    let control={
-        init(view,model){
-          this.view=view
-          this.model=model
-          this.view.render(this.model.data)
-          this.bindEvents()
-          window.eventHub.on('upload',(data)=>{
-            this.view.active()
-          })
-          window.eventHub.on('listActive',(songId)=>{
-            console.log(songId)
-            this.view.removeActive()
-          })
-        },
-        bindEvents(){
-          $(this.view.el).on('click',()=>{
-            this.view.active()
-            window.eventHub.emit('newSong-active')
-          })
-        },
-
+    active() {
+      $(this.el).addClass("active");
+    },
+    removeActive() {
+      $(this.el).removeClass("active");
     }
-    control.init(view,model)
-  }
-  
+  };
+  let model = {};
+  let control = {
+    init(view, model) {
+      this.view = view;
+      this.model = model;
+      this.view.render(this.model.data);
+      this.bindEvents();
+      this.bindEventHub();
+    },
+    bindEvents() {
+      $(this.view.el).on("click", () => {
+        this.view.active();
+        window.eventHub.emit("newSong-active");
+      });
+    },
+    bindEventHub() {
+      window.eventHub.on("upload", data => {
+        this.view.active();
+      });
+      window.eventHub.on("listActive", data => {
+        this.view.removeActive();
+      });
+    }
+  };
+  control.init(view, model);
+}
