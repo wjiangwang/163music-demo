@@ -1,0 +1,206 @@
+@charset "UTF-8";
+ol,
+li {
+  list-style: none;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+*::after {
+  box-sizing: border-box;
+}
+
+*::before {
+  box-sizing: border-box;
+}
+body {
+  font: 14px/1.5 Helvetica,sans-serif;
+  color: #333;
+}
+a{text-decoration: none; color: #333;}
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  width: 100%;
+ /* position: fixed;*/
+  top: 0;
+  left: 0;
+  background: #d43c33;
+  height: 15.45894vw;
+  padding: 0vw 2.41546vw;
+}
+
+.topbar .topsvg {
+  width: 34.2995vw;
+  height: 6.0386vw;
+}
+.topbar a {
+  display: block;
+  text-decoration: none;
+
+  line-height: 7.2464vw;
+  padding: 0 2.4155vw;
+  color: #fff;
+  font-size: 3.6232vw;
+  border-radius: 37.5%/100%;
+  border: 1px solid #fff;
+}
+
+.navbar {
+  /*position: fixed;
+  top: 15.4589vw;*/
+  width: 100%;
+  height: 9.6618vw;
+  background: #fff;
+  border-bottom: 0.5px solid #ccc;
+}
+.navbar ol {
+  display: flex;
+  text-align: center;
+}
+.navbar ol > li {
+  width: 33.33%;
+  font-size: 3.6232vw;
+  line-height: 9.6618vw;
+  
+}
+.navbar ol > li > span{
+  display: inline-block;
+  position: relative;
+  padding: 0 1.2077vw;
+}
+
+.navbar ol > li.active> span::after {
+  box-sizing: content-box;
+  content: "";
+  position: absolute;
+  left:0;
+  bottom: -0.2415vw;
+border-top: 0.4831vw solid #d43c33;
+width: 100%;
+}
+
+
+
+.s1{
+  /*margin-top: 25.1208vw;*/
+}
+.s1>h2{
+  padding-top: 4.8309vw;
+  padding-left: 2.1739vw;
+    margin-bottom: 3.3816vw;
+    font-size: 4.1063vw;
+    line-height: 4.8309vw;
+    font-weight: 400;
+    position: relative;
+}
+.s1>h2::before{
+  position: absolute;
+  left: 0;
+  content: '';
+  height: 3.9vw;
+  width: 0.4831vw;
+  background-color: #d43c33;
+  margin-top: 0.2415vw;
+}
+.s1>ol{
+  display: flex;
+  text-align: center;
+  justify-content:space-between;
+  flex-wrap: wrap;
+  margin-bottom: 5.7971vw;
+}
+.s1>ol>li{
+  width: 33%;
+  margin-bottom: 3.8647vw;
+}
+.s1>ol>li>img{
+width: 100%;
+}
+.s1>ol>li>p{
+  padding: 1.4493vw 0.4831vw 0 1.4493vw;
+  text-align: left;
+  line-height: 1.2;
+  font-size: 3.1401vw;
+}
+
+.s1>a{
+  display: flex;
+  position: relative;
+  padding: 1.4493vw 0;
+  border-bottom: thin solid #ccc;
+  margin-left: 2.4155vw;
+}
+
+
+.s1>a>.song>.song-name{
+  font-size: 4.1063vw;
+}
+
+.s1>a>.song>.song-message{
+  display: flex;
+  font-size: 2.8986vw;
+  color: #888;
+  
+}
+
+.s1>a>.icon{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 2.4155vw;
+  position: absolute;
+  right: 0;
+  height: 100%;
+
+}
+
+.s1>a>.icon>svg{
+ width: 5.314vw;
+  height: 5.314vw;
+  fill: #ccc;
+  border-radius: 50%;
+
+}
+
+.footer{
+  height: 53.285vw;
+  background: url(//s3.music.126.net/m/s/img/recommand_bg_2x.png?d045faf…) no-repeat;
+  background-size: contain;
+  
+}
+.footer>.logo{
+  padding-top: 16.9%;
+  text-align: center;
+}
+.footer>.logo>svg{
+
+width: 55.5556vw;
+height: 10.628vw;
+
+}
+
+.footer>.openapp{
+  text-align: center;
+  line-height: 9.1787vw;
+  border: 0.2415vw solid #d33a31;
+  border-radius: 9.1787vw;
+  font-size: 3.8647vw;
+  color: #d33a31;
+  margin: 3.6232vw 8.9372vw 1.2077vw;
+}
+.footer>p{
+  text-align: center;
+  color: #888;
+  font-size: 2.8986vw;
+ 
+}

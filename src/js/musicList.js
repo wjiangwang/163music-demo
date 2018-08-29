@@ -94,6 +94,7 @@
           if(this.model.data.songs[i].id===data.id){
             this.model.data.songs[i]=data
             this.view.render(this.model.data);
+            this.view.addActive($(this.view.el).find(`[song-id=${data.id}]`))//重新 active 当前更新项
             break
           }
           
