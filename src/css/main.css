@@ -7,7 +7,7 @@
     position: fixed;
     top: 15.4589vw;
   }
-  .s1{
+  .s1,.content{
     margin-top: 25.1208vw;
   }
 }
@@ -21,7 +21,7 @@
     position: inherit;
     
   }
-  .s1{
+  .s1,.content{
     margin-top: 0;
   }
 }
@@ -49,12 +49,14 @@ li {
   box-sizing: border-box;
 }
 body {
-  font: 14px/1.5 Helvetica,sans-serif;
+  font: 3.3816vw/1.5 Helvetica,sans-serif;
   color: #333;
 }
 a{text-decoration: none; color: #333;}
+
+/*顶部*/
 .topbar {
-  z-index: 1;
+  z-index: 10;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -81,9 +83,9 @@ a{text-decoration: none; color: #333;}
   border-radius: 37.5%/100%;
   border: 1px solid #fff;
 }
-
+/*标签 切换 导航栏*/
 .navbar {
-  z-index: 1;
+  z-index: 10;
   /*position: fixed;
   top: 15.4589vw;*/
   width: 100%;
@@ -117,12 +119,19 @@ border-top: 0.4831vw solid #d43c33;
 width: 100%;
 }
 
+.content.active{
+  display: block;
+}
+.content{
+  display: none;
+}
 
-
-.s1{
+/*第一部分*/
+.s1 {
+  
   /*margin-top: 25.1208vw;*/
 }
-.s1>h2{
+.s1 h2{
   padding-top: 4.8309vw;
   padding-left: 2.1739vw;
     margin-bottom: 3.3816vw;
@@ -131,7 +140,8 @@ width: 100%;
     font-weight: 400;
     position: relative;
 }
-.s1>h2::before{
+
+.s1 h2::before{
   position: absolute;
   left: 0;
   content: '';
@@ -140,28 +150,35 @@ width: 100%;
   background-color: #d43c33;
   margin-top: 0.2415vw;
 }
-.s1>ol{
+/*第一 部分  歌单*/
+.s1>.sheet>ol{
   display: flex;
   text-align: center;
   justify-content:space-between;
   flex-wrap: wrap;
   margin-bottom: 5.7971vw;
 }
-.s1>ol>li{
+.s1>.sheet>ol>li{
   width: 33%;
   margin-bottom: 3.8647vw;
 }
-.s1>ol>li>img{
+.s1>.sheet>ol>li>img{
 width: 100%;
 }
-.s1>ol>li>p{
+.s1>.sheet>ol>li>p{
   padding: 1.4493vw 0.4831vw 0 1.4493vw;
   text-align: left;
   line-height: 1.2;
   font-size: 3.1401vw;
 }
 
-.s1>a{
+/*第一 二部分  播放列表 通用*/
+.s1>.last-music>h2{
+  padding-top: 0;
+}
+
+.s2>.list>a,
+.s1>.last-music>a{
   display: flex;
   position: relative;
   padding: 1.4493vw 0;
@@ -169,19 +186,19 @@ width: 100%;
   margin-left: 2.4155vw;
 }
 
-
-.s1>a>.song>.song-name{
+.s2>.list>a>.song>.song-name,
+.s1>.last-music>a>.song>.song-name{
   font-size: 4.1063vw;
 }
-
-.s1>a>.song>.song-message{
+.s2>.list>a>.song>.song-message,
+.s1>.last-music>a>.song>.song-message{
   display: flex;
   font-size: 2.8986vw;
   color: #888;
   
 }
-
-.s1>a>.icon{
+.s2>.list>a>.icon,
+.s1>.last-music>a>.icon{
   display: flex;
   align-items: center;
   justify-content: center;
@@ -191,33 +208,33 @@ width: 100%;
   height: 100%;
 
 }
-
-.s1>a>.icon>svg{
+.s2>.list>a>.icon>svg,
+.s1>.last-music>a>.icon>svg{
  width: 5.314vw;
   height: 5.314vw;
   fill: #ccc;
   border-radius: 50%;
 
 }
-
-.footer{
+/*第一部分 尾部打开APP*/
+.s1>.footer{
   height: 53.285vw;
   background: url(//s3.music.126.net/m/s/img/recommand_bg_2x.png?d045faf…) no-repeat;
   background-size: contain;
   
 }
-.footer>.logo{
+.s1>.footer>.logo{
   padding-top: 16.9%;
   text-align: center;
 }
-.footer>.logo>svg{
+.s1>.footer>.logo>svg{
 
 width: 55.5556vw;
 height: 10.628vw;
 
 }
 
-.footer>.openapp{
+.s1>.footer>.openapp{
   text-align: center;
   line-height: 9.1787vw;
   border: 0.2415vw solid #d33a31;
@@ -226,9 +243,82 @@ height: 10.628vw;
   color: #d33a31;
   margin: 3.6232vw 8.9372vw 1.2077vw;
 }
-.footer>p{
+.s1>.footer>p{
   text-align: center;
   color: #888;
   font-size: 2.8986vw;
  
 }
+
+/*第二部分*/
+/*第二部分 大背景*/
+.s2>.hotop{
+  z-index: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 4.8309vw;
+  height: 38.8889vw;
+  background-size: contain;
+  background-image: url(//s3.music.126.net/m/s/img/hot_music_bg_3x.jpg?2bfefd3ba37eaffbd66b7d108b9de26a) ;
+}
+.s2>.hotop::after{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  content: '';
+  background-color: rgba(0,0,0,.2);
+
+}
+
+.s2>.hotop>.logo{
+  z-index: 1;
+  background-position: -5.7971vw -7.2464vw;
+  width: 34.2995vw;
+  height: 16.1836vw;
+  background-size: 40.0966vw 23.43vw;
+  background-image: url(//s3.music.126.net/m/s/img/index_icon_2x.png?5207a28c3767992ca4bb6d4887c74880) ;
+}
+.s2>.hotop>.hottime{
+  z-index: 1;
+  margin-top: 2.4155vw;
+  color: hsla(0,0%,100%,.8);
+  font-size: 2.8986vw;
+
+}
+
+/*第二部分 歌单*/
+.s2>.list>a .song-num.top{
+  color: #df3436;
+}
+.s2>.list>a .song-num{
+    display: flex;
+    color: #999;
+    align-items: center;
+    width: 6.7633vw;
+    font-size: 4.1063vw;
+
+}
+.s2>.list>a>.song{
+  width: 100%;
+  border-bottom: thin solid #ccc; 
+}
+.s2>.list>a{
+  border: none;
+}
+/*第二部分 结尾*/
+.s2>.footer{
+  line-height: 13.285vw;
+  text-align: center;
+}
+.s2>.footer>span{
+  color: #999;
+  padding-right: 3.3816vw;
+  background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNCAyMiI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBmaWxsPSJub25lIiBzdHJva2U9IiNjY2MiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBkPSJtMSAxbDEwIDEwLTEwIDEwIi8+PC9zdmc+)100%  no-repeat ;
+  background-size: 1.6908vw 2.8986vw ;
+}
+
+/*第三部分*/
