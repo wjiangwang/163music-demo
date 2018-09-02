@@ -261,7 +261,7 @@ height: 10.628vw;
   padding-left: 4.8309vw;
   height: 38.8889vw;
   background-size: contain;
-  background-image: url(//s3.music.126.net/m/s/img/hot_music_bg_3x.jpg?2bfefd3ba37eaffbd66b7d108b9de26a) ;
+  background-image: url(//s3.music.126.net/m/s/img/hot_music_bg_3x.jpg?2bfefd3ba37eaffbd66b7d108b9de26a) no-repeat;
 }
 .s2>.hotop::after{
   position: absolute;
@@ -280,7 +280,7 @@ height: 10.628vw;
   width: 34.2995vw;
   height: 16.1836vw;
   background-size: 40.0966vw 23.43vw;
-  background-image: url(//s3.music.126.net/m/s/img/index_icon_2x.png?5207a28c3767992ca4bb6d4887c74880) ;
+  background-image: url(//s3.music.126.net/m/s/img/index_icon_2x.png?5207a28c3767992ca4bb6d4887c74880) no-repeat;
 }
 .s2>.hotop>.hottime{
   z-index: 1;

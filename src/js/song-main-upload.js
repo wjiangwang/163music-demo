@@ -65,11 +65,12 @@
                         });
                     },
                     'BeforeUpload': function (up, file) {
+                        window.eventHub.emit('BeforeUpload')
                         // 每个文件上传前,处理相关的事情
                     },
                     'UploadProgress': function (up, file) {
                         $('#container>#pickfiles').html('上传中...')
-    
+                        
                         // 每个文件上传时,处理相关的事情
                     },
                     'FileUploaded': function (up, file, info) {
