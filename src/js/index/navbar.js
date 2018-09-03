@@ -16,8 +16,7 @@
                   .siblings()
                   .removeClass("active");
                   
-                let className = $(e.currentTarget)[0].id;
-                console.log($(e.currentTarget)[0])//标贴切换
+                let className = $(e.currentTarget)[0].id;//标贴切换
                 $(".content").removeClass("active");
                 $(`.${className}`).addClass("active");
               });

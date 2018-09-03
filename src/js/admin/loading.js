@@ -21,6 +21,9 @@
             window.eventHub.on('upload',()=>{
                 this.view.hide()
             })
+            window.eventHub.on('uploadError',()=>{
+                this.view.hide()
+            })
         }
     }
     controller.init(view)

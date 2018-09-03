@@ -88,6 +88,7 @@
                         window.eventHub.emit('upload',{link:sourceLink,songName:res.key})
                     },
                     'Error': function (up, err, errTip) {
+                        window.eventHub.emit('uploadError')
                         $('#container > #pickfiles').html('上传失败，请重试')
                         //上传出错时,处理相关的事情
                     },
