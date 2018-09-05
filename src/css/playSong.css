@@ -22,6 +22,7 @@ li {
 body {
   font: 3.3816vw/1.5 Helvetica, sans-serif;
   color: #333;
+  -webkit-tap-highlight-color:transparent;
 }
 a {
   text-decoration: none;
@@ -86,6 +87,7 @@ a {
   background-size: contain;
   animation: circle 20s linear infinite;
   animation-play-state: paused;
+  
 }
 .disk.active{
   animation-play-state: running;

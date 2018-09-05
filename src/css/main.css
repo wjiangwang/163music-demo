@@ -51,6 +51,7 @@ li {
 body {
   font: 3.3816vw/1.5 Helvetica,sans-serif;
   color: #333;
+  -webkit-tap-highlight-color:transparent;
 }
 a{text-decoration: none; color: #333;}
 
