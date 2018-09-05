@@ -1,0 +1,176 @@
+ol,
+li {
+  list-style: none;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+*::after {
+  box-sizing: border-box;
+}
+
+*::before {
+  box-sizing: border-box;
+}
+body {
+  font: 3.3816vw/1.5 Helvetica, sans-serif;
+  color: #333;
+}
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+/*模糊的背景*/
+.background {
+  z-index: -1;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background: url("//music.163.com/api/img/blur/109951163046050093") no-repeat;
+  background-size: auto 100%;
+  background-position: center;
+  transform-origin: center top;
+  transform: scale(1.5);
+}
+.background::after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+/*光盘部分*/
+.songWrap {
+  padding-top: 19.3237vw;
+  position: relative;
+}
+.diskWrap {
+  width: 82.6087vw;
+  height: 82.6087vw;
+  margin: 0 8.6957vw;
+}
+.logo {
+  position: absolute;
+  top: 2.4155vw;
+  left: 2.4155vw;
+  width: 22.2222vw;
+  height: 4.1063vw;
+  display: block;
+}
+.disk {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: url(//s3.music.126.net/m/s/img/disc.png?d3bdd1080a72129346aa0b4b4964b75f)
+    no-repeat;
+  background-size: contain;
+}
+.disk::after {
+  position: absolute;
+  left: 36.2319vw;
+  top: -19.3237vw;
+  content: "";
+  background: url(//s3.music.126.net/m/s/img/needle-plus.png?994aa910ce3e4d242eb7076620b0e502)
+    no-repeat;
+  background-size: contain;
+  width: 26.57vw;
+  height: 37.9227vw;
+}
+.disk-light {
+  z-index: 1;
+  position: absolute;
+  background: url(//s3.music.126.net/m/s/img/disc_light-plus.png?4392c8c9a8a33d4b2b2c33d3995503c9)
+    no-repeat;
+  background-size: contain;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+}
+.playButton {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-top: -7.8502vw;
+  margin-left: -7.8502vw;
+  height: 15.7005vw;
+  width: 15.7005vw;
+  background: url(//s3.music.126.net/m/s/img/play_btn_3x.png?4da7e135b7c089f3777ec5cdbbb3a8d8)
+    no-repeat;
+  background-size: contain;
+}
+/*歌曲图片*/
+.song-img {
+  width: 51.2077vw;
+  height: 51.2077vw;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+/*歌词部分*/
+.songMessage {
+  margin-top: 6.0386vw;
+  padding: 0 8.4541vw;
+}
+.songMessage > h2 {
+  text-align: center;
+  text-overflow: ellipsis;
+  line-height: 1.1;
+  font-weight: 400;
+  font-size: 4.3478vw;
+  white-space: nowrap;
+  color: #fefefe;
+  overflow: hidden;
+}
+.lyric {
+  margin-top: 3.3816vw;
+}
+.lyric > p {
+  padding-bottom: 1.9324vw;
+  font-size: 3.8647vw;
+  text-align: center;
+  color: hsla(0, 0%, 100%, 0.6);
+}
+
+/*footer*/
+.footer {
+  display: flex;
+  width: 100%;
+  height: 9.6618vw;
+  position: fixed;
+  top: 165.7005vw;
+  padding: 0 2.4155vw;
+}
+.footer > span {
+  flex: 1 1 auto;
+  font-size: 4.3478vw;
+  height: 9.6618vw;
+  line-height: 9.6618vw;
+  padding: 0 1.4493vw;
+  border: 0.2415vw solid #d33a31;
+  border-radius: 9.6618vw;
+  text-align: center;
+}
+.footer > .open {
+  color: #d33a31;
+}
+.footer > .download {
+  color: #fff;
+  background-color: #d33a31;
+  margin-left: 2.4155vw;
+}
