@@ -14,6 +14,10 @@
       $(this.el)
         .find("audio")
         .attr("src", data.link);
+      $(this.el).find("audio")[0].onended=()=>{
+        console.log('xxx')
+        this.pause()
+      }
     },
     play() {
       $(this.el)
