@@ -15,11 +15,15 @@
                     链接
                     <input name='link' type="text" value='___link___'>
                 </label>
+                <label>
+                封面
+                <input name='cover' type="text" value='___cover___'>
+                </label>
                 <input type="submit" value="提交">
             </form>
     `,
     render(data = {}) {
-      let placeholder = ["songName", "singer", "link"];
+      let placeholder = ["songName", "singer", "link", 'cover'];
       let html = this.template;
       placeholder.map(string => {
         html = html.replace(`___${string}___`, data[string] || "");
@@ -33,7 +37,7 @@
     }
   };
   let modle = {
-    data: { songName: "", singer: "", link: "", id: "" },
+    data: { songName: "", singer: "", link: "", cover:'',id: "" },
     creatData(data) {
       var Song = AV.Object.extend("Song");
       var song = new Song();
@@ -41,7 +45,8 @@
         .save({
           songName: data.songName,
           singer: data.singer,
-          link: data.link
+          link: data.link,
+          cover:data.cover
         })
         .then(
           object => {
@@ -64,6 +69,7 @@
       song.set("songName", data.songName);
       song.set("singer", data.singer);
       song.set("link", data.link);
+      song.set("cover", data.cover);
      return song.save();
     }
   };
@@ -77,7 +83,7 @@
     },
     save() {
       let data = {};
-      let needs = ["songName", "singer", "link"];
+      let needs = ["songName", "singer", "link",'cover'];
       needs.map(string => {
         data[string] = $(this.view.el)
           .find(`[name=${string}]`)
@@ -92,7 +98,7 @@
     },
     updata() {
       let data = {};
-      let needs = ["songName", "singer", "link"];
+      let needs = ["songName", "singer", "link",'cover'];
       needs.map(string => {
         data[string] = $(this.view.el)
           .find(`[name=${string}]`)
