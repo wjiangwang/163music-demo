@@ -19,11 +19,15 @@
                 封面
                 <input name='cover' type="text" value='___cover___'>
                 </label>
+                <label class='lyric'>
+                歌词
+                <textarea rows="12" cols="50" name='lyric'>___lyric___</textarea>
+                </label>
                 <input type="submit" value="提交">
             </form>
     `,
     render(data = {}) {
-      let placeholder = ["songName", "singer", "link", 'cover'];
+      let placeholder = ["songName", "singer", "link", 'cover','lyric'];
       let html = this.template;
       placeholder.map(string => {
         html = html.replace(`___${string}___`, data[string] || "");
@@ -37,7 +41,7 @@
     }
   };
   let modle = {
-    data: { songName: "", singer: "", link: "", cover:'',id: "" },
+    data: { songName: "", singer: "", link: "", cover:'',lyric:'',id: "" },
     creatData(data) {
       var Song = AV.Object.extend("Song");
       var song = new Song();
@@ -46,7 +50,8 @@
           songName: data.songName,
           singer: data.singer,
           link: data.link,
-          cover:data.cover
+          cover:data.cover,
+          lyric:data.lyric,
         })
         .then(
           object => {
@@ -70,6 +75,7 @@
       song.set("singer", data.singer);
       song.set("link", data.link);
       song.set("cover", data.cover);
+      song.set('lyric',data.lyric)
      return song.save();
     }
   };
@@ -83,7 +89,7 @@
     },
     save() {
       let data = {};
-      let needs = ["songName", "singer", "link",'cover'];
+      let needs = ["songName", "singer", "link",'cover','lyric'];
       needs.map(string => {
         data[string] = $(this.view.el)
           .find(`[name=${string}]`)
@@ -98,7 +104,7 @@
     },
     updata() {
       let data = {};
-      let needs = ["songName", "singer", "link",'cover'];
+      let needs = ["songName", "singer", "link",'cover','lyric'];
       needs.map(string => {
         data[string] = $(this.view.el)
           .find(`[name=${string}]`)

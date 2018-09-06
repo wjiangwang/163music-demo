@@ -86,11 +86,10 @@ a {
     no-repeat;
   background-size: contain;
   animation: circle 20s linear infinite;
-  animation-play-state: paused;
-  
+  -webkit-animation-play-state:paused ;
 }
 .disk.active{
-  animation-play-state: running;
+  -webkit-animation-play-state:running;
 }
 
 .diskWrap::after {
@@ -152,15 +151,31 @@ a {
   color: #fefefe;
   overflow: hidden;
 }
-.lyric {
-  margin-top: 1.9324vw;
+
+.songMessage .singer{
+  color: hsla(0, 0%, 100%, 0.6);
+  font-size: 3.8647vw;
+  
 }
-.lyric > p {
+.lyric {
+  height: 22.4638vw;
+  margin-top: 1.9324vw;
+  overflow: hidden;
+}
+.lyric .lines{
+  transition: transform .3s ease-out,-webkit-transform .3s ease-out;
+}
+.lyric  p {
   padding-bottom: 1.9324vw;
   font-size: 3.8647vw;
   text-align: center;
   color: hsla(0, 0%, 100%, 0.6);
 }
+
+.lyric  p.active{
+  color: #fefefe;
+  
+} 
 
 /*footer*/
 .footer {

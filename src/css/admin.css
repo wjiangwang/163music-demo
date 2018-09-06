@@ -26,6 +26,7 @@ ol,li{ list-style:none}
   border-bottom: 1px #ddd solid;
 }
 form{
+  position: relative;
   flex-direction: column;
   display: flex;
   padding-left: 10%;
@@ -40,6 +41,16 @@ font: inherit;
 border: 1px solid #ddd;
 border-radius: 6px;
 outline: none;
+}
+
+.lyric{
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
+  
+position: absolute;
+top:32px;
+left: 420px;
 
 }
 input[type=submit] {

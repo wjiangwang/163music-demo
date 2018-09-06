@@ -5,6 +5,7 @@
 
       `,
     rander(data) {
+      //这里的 data 是 song
       $(this.el)
         .find(".background")
         .css({ "background-image": `url(${data.cover}) ` });
@@ -14,24 +15,94 @@
       $(this.el)
         .find("audio")
         .attr("src", data.link);
-      $(this.el).find("audio")[0].onended=()=>{//监听歌曲播放结束后
-        this.pause()
-      }
+      $(this.el)
+        .find(".songName")
+        .text(data.songName);
+      $(this.el)
+        .find(".singer")
+        .text(data.singer);
+      //歌词
+      let { lyric } = data;
+      let array = lyric.split("\n");
+      array.map(string => {
+        let regex = /\[([\d:.]+)\](.+)/; //正则区分开 时间 和 歌词
+        let match = string.match(regex);
+        let $p;
+        if (match) {
+          $p = $(`<p>${match[2]}</p>`);
+          let times = match[1].split(":");
+          time = parseFloat(times[0], 10) * 60 + parseFloat(times[1], 10); //时间转化为 按秒计时
+          $p.attr("time-line", time); //添加时间线在属性
+        } else {
+          $p = $(`<p>${string}</p>`);
+        }
+        $(this.el)
+          .find(".lyric>.lines")
+          .append($p);
+      });
+
+      let audio = $(this.el).find("audio")[0];
+      audio.ontimeupdate = () => {
+        //歌曲时间变化
+        this.showLyric(audio.currentTime);
+      };
+      audio.onended = () => {
+        //监听歌曲播放结束后
+        this.pause();
+      };
     },
     play() {
       $(this.el)
         .find("audio")[0]
         .play();
-        $(this.el).find('.disk').addClass('active')
-        $(this.el).find('.playButton').hide()
-        
+      $(this.el)
+        .find(".disk")
+        .addClass("active");
+      $(this.el)
+        .find(".playButton")
+        .hide();
     },
     pause() {
       $(this.el)
         .find("audio")[0]
         .pause();
-        $(this.el).find('.disk').removeClass('active')
-        $(this.el).find('.playButton').show()
+      $(this.el)
+        .find(".disk")
+        .removeClass("active");
+      $(this.el)
+        .find(".playButton")
+        .show();
+    },
+    showLyric(time) {
+      let allLyric = $(this.el).find(".lyric>.lines>p");
+
+      for (let i = 0; i < allLyric.length; i++) {
+        let currentTime = allLyric.eq([i]).attr("time-line");
+        let nextTime = allLyric.eq([i + 1]).attr("time-line");
+        console.log(i);
+        if (i > allLyric.length - 2) {
+          // 最后一句歌词
+
+          if (time >= currentTime) {
+            allLyric
+              .eq([i])
+              .addClass("active")
+              .siblings()
+              .removeClass("active");
+          }
+        } else {
+          if (time >= currentTime && time < nextTime) {
+            allLyric
+              .eq([i])
+              .addClass("active")
+              .siblings()
+              .removeClass("active");
+            $(this.el)
+              .find(".lyric>.lines")
+              .css({ transform: `translateY(-${(i - 1) * 7.4879}vw)` });
+          }
+        }
+      }
     }
   };
   let model = {
@@ -57,7 +128,6 @@
       this.model = model;
       this.getId();
       this.model.getSong().then(() => {
-        console.log(this.model.data)
         this.view.rander(this.model.data.song);
       });
       this.bindEvents();
@@ -84,13 +154,12 @@
     },
     bindEvents() {
       $(this.view.el).on("click", ".diskWrap", () => {
-        console.log(this.model.data)
-        if (this.model.data.status===false) {
+        if (this.model.data.status === false) {
           this.view.play();
-          this.model.data.status=true
+          this.model.data.status = true;
         } else {
           this.view.pause();
-          this.model.data.status=false
+          this.model.data.status = false;
         }
       });
     }
