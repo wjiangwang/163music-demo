@@ -161,15 +161,20 @@ a {
   height: 22.4638vw;
   margin-top: 1.9324vw;
   overflow: hidden;
+  
 }
 .lyric .lines{
   transition: transform .3s ease-out,-webkit-transform .3s ease-out;
+  
 }
 .lyric  p {
   padding-bottom: 1.9324vw;
   font-size: 3.8647vw;
   text-align: center;
   color: hsla(0, 0%, 100%, 0.6);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  
 }
 
 .lyric  p.active{
@@ -195,6 +200,7 @@ a {
   border: 0.2415vw solid #d33a31;
   border-radius: 9.6618vw;
   text-align: center;
+  letter-spacing: 1.5vw;
 }
 .footer > .open {
   color: #d33a31;

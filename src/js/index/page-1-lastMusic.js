@@ -50,6 +50,7 @@
     bindEvents() {},
     getAllSongs() {
       this.model.find().then(x => {
+        $(this.view.el).find('.loading').hide()
         this.view.render(this.model.data);
       });
     }

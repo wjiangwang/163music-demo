@@ -79,7 +79,6 @@
       for (let i = 0; i < allLyric.length; i++) {
         let currentTime = allLyric.eq([i]).attr("time-line");
         let nextTime = allLyric.eq([i + 1]).attr("time-line");
-        console.log(i);
         if (i > allLyric.length - 2) {
           // 最后一句歌词
 
