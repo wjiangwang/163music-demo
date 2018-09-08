@@ -40,7 +40,7 @@
           .find(".lyric>.lines")
           .append($p);
       });
-
+        this.play()//自动播放
       let audio = $(this.el).find("audio")[0];
       audio.ontimeupdate = () => {
         //歌曲时间变化
@@ -75,7 +75,7 @@
     },
     showLyric(time) {
       let allLyric = $(this.el).find(".lyric>.lines>p");
-
+      
       for (let i = 0; i < allLyric.length; i++) {
         let currentTime = allLyric.eq([i]).attr("time-line");
         let nextTime = allLyric.eq([i + 1]).attr("time-line");
@@ -98,7 +98,7 @@
               .removeClass("active");
             $(this.el)
               .find(".lyric>.lines")
-              .css({ transform: `translateY(-${(i - 1) * 7.4879}vw)` });
+              .css({ transform: `translateY(-${(i - 1) * ($(this.el).find(".lyric").height()/3)}px)` });//每次上移动1/3的区域高度
           }
         }
       }
@@ -107,7 +107,7 @@
   let model = {
     data: {
       song: {},
-      status: false
+      status: true
     },
     getSong() {
       var query = new AV.Query("Song");
