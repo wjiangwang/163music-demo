@@ -41,6 +41,10 @@
           .find(".search-result h3")
           .text("没有结果");
       }
+      $(".s3")
+      .find(".search-result>.list>a").on('click',()=>{
+        $("#search input").val('')
+      })
     }
   };
 
@@ -86,6 +90,7 @@
         return;
       });
       let timer = undefined;
+
       $("#search input").on("input", e => {
         $("#search .holder").hide();
         $(".search>.close").show();
@@ -96,19 +101,19 @@
           clearTimeout(timer);
         }
 
-        if (keyword === "") {
-          //无输入时 展示原始界面
-          $(".s3")
-            .find(".search-result")
-            .hide();
-          $(".s3 ")
-            .find(".hotsearch")
-            .show();
-          $("#search .holder").show();
-          $(".search>.close").hide();
-          return;
-        }
         timer = setTimeout(() => {
+          if (keyword === "") {
+            //无输入时 展示原始界面
+            $(".s3")
+              .find(".search-result")
+              .hide();
+            $(".s3 ")
+              .find(".hotsearch")
+              .show();
+            $("#search .holder").show();
+            $(".search>.close").hide();
+            return;
+          }
           this.modle.search(keyword).then(result => {
             $(".s3")
               .find(".search-result")

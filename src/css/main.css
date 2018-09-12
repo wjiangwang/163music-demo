@@ -153,6 +153,7 @@ width: 100%;
 }
 /*第一 部分  歌单*/
 .s1>.sheet>ol{
+  
   display: flex;
   text-align: center;
   justify-content:space-between;
