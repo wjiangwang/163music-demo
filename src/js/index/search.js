@@ -48,23 +48,19 @@
     data: {
       songs: []
     },
-    find() {
-      var query = new AV.Query("Song");
+    search(keyword) {
+      var songNameQuery = new AV.Query("Song");
+      songNameQuery.contains("songName", keyword);
+      var singerQuery = new AV.Query("Song");
+      singerQuery.contains("singer", keyword);
+      var query = AV.Query.or(songNameQuery, singerQuery);
+
       return query.find().then(songs => {
         this.data.songs = []; //数组里的对象如何更新？？？ 先用笨方法替代
         songs.map(song => {
           this.data.songs.push({ id: song.id, ...song.attributes });
         });
-        console.log(this.data);
-        return songs;
-      });
-    },
-    search(keyword) {
-      return this.find().then(() => {
-        let result = this.data.songs.filter(item => {
-          return item.songName.indexOf(keyword) >= 0;
-        });
-        return result;
+        return this.data.songs;
       });
     }
   };
@@ -76,7 +72,8 @@
       this.bindEvents();
     },
     monitoring() {
-      $(".search>.close").on("click", () => {//关闭图标 被点击时 清空搜索框
+      $(".search>.close").on("click", () => {
+        //关闭图标 被点击时 清空搜索框
         $("#search input").val("");
         $(".s3")
           .find(".search-result")
@@ -94,7 +91,7 @@
         $(".search>.close").show();
         let keyword = $(e.currentTarget)
           .val()
-          .trim();
+          .trim(); //去掉空格
         if (timer) {
           clearTimeout(timer);
         }
