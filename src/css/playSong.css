@@ -40,18 +40,21 @@ a {
 
 /*模糊的背景*/
 .background {
+  opacity: 0.5;
   z-index: -1;
   position: fixed;
   left: 0;
   top: 0;
   bottom: 0;
   right: 0;
-  background: url("//music.163.com/api/img/blur/109951163046050093") no-repeat;
+  background: url("#") no-repeat;
   background-size: auto 100%;
   background-position: center;
   transform-origin: center top;
   transform: scale(1.1);
   filter: blur(3.6232vw);
+  -webkit-transition: opacity .4s linear;
+    transition: opacity .4s linear;
 }
 .background::after {
   content: " ";
@@ -61,6 +64,7 @@ a {
   bottom: 0;
   top: 0;
   background-color: rgba(0, 0, 0, 0.5);
+  
 }
 /*光盘部分*/
 .songWrap {

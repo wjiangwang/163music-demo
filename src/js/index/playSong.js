@@ -8,7 +8,7 @@
       //这里的 data 是 song
       $(this.el)
         .find(".background")
-        .css({ "background-image": `url(${data.cover}) ` });
+        .css({ "background-image": `url(${data.cover}) `,'opacity': 1});
       $(this.el)
         .find(".song-img")
         .attr("src", data.cover);
@@ -40,7 +40,7 @@
           .find(".lyric>.lines")
           .append($p);
       });
-      this.play(); //自动播放
+      
       let audio = $(this.el).find("audio")[0];
       audio.ontimeupdate = () => {
         //歌曲时间变化
@@ -107,7 +107,7 @@
   let model = {
     data: {
       song: {},
-      status: true
+      status: false
     },
     getSong() {
       let query = new AV.Query("Song");
