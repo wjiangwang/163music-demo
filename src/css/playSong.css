@@ -22,16 +22,20 @@ li {
 body {
   font: 3.3816vw/1.5 Helvetica, sans-serif;
   color: #333;
-  -webkit-tap-highlight-color:transparent;
+  -webkit-tap-highlight-color: transparent;
 }
 a {
   text-decoration: none;
   color: #333;
 }
 
-@keyframes circle{
-  0%{transform:rotate(0deg)}
-  100%{transform:rotate(360deg)}
+@keyframes circle {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
 }
 
 /*模糊的背景*/
@@ -48,7 +52,6 @@ a {
   transform-origin: center top;
   transform: scale(1.1);
   filter: blur(3.6232vw);
-  
 }
 .background::after {
   content: " ";
@@ -69,7 +72,6 @@ a {
   width: 82.6087vw;
   height: 82.6087vw;
   margin: 0 8.6957vw;
-  
 }
 .logo {
   position: absolute;
@@ -85,11 +87,13 @@ a {
   background: url(//s3.music.126.net/m/s/img/disc.png?d3bdd1080a72129346aa0b4b4964b75f)
     no-repeat;
   background-size: contain;
-  animation: circle 20s linear infinite;
-  -webkit-animation-play-state:paused ;
 }
-.disk.active{
-  -webkit-animation-play-state:running;
+.container {
+  height: 100%;
+}
+
+.disk.active {
+  animation: circle 20s linear infinite;
 }
 
 .diskWrap::after {
@@ -106,8 +110,7 @@ a {
 .disk-light {
   z-index: 1;
   position: absolute;
-  background: url(#)
-    no-repeat;
+  background: url(#) no-repeat;
   background-size: contain;
   left: 0;
   top: 0;
@@ -152,35 +155,30 @@ a {
   overflow: hidden;
 }
 
-.songMessage .singer{
+.songMessage .singer {
   color: hsla(0, 0%, 100%, 0.6);
   font-size: 3.8647vw;
-  
 }
 .lyric {
   height: 22.4638vw;
   margin-top: 1.9324vw;
   overflow: hidden;
-  
 }
-.lyric .lines{
-  transition: transform .3s ease-out,-webkit-transform .3s ease-out;
-  
+.lyric .lines {
+  transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out;
 }
-.lyric  p {
+.lyric p {
   padding-bottom: 1.9324vw;
   font-size: 3.8647vw;
   text-align: center;
   color: hsla(0, 0%, 100%, 0.6);
   white-space: nowrap;
   text-overflow: ellipsis;
-  
 }
 
-.lyric  p.active{
+.lyric p.active {
   color: #fefefe;
-  
-} 
+}
 
 /*footer*/
 .footer {

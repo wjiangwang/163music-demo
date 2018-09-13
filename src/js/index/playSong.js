@@ -40,7 +40,7 @@
           .find(".lyric>.lines")
           .append($p);
       });
-        this.play()//自动播放
+      this.play(); //自动播放
       let audio = $(this.el).find("audio")[0];
       audio.ontimeupdate = () => {
         //歌曲时间变化
@@ -51,31 +51,31 @@
         this.pause();
       };
     },
-    play() {
-      $(this.el)
-        .find("audio")[0]
-        .play();
-      $(this.el)
-        .find(".disk")
-        .addClass("active");
-      $(this.el)
-        .find(".playButton")
-        .hide();
-    },
     pause() {
       $(this.el)
         .find("audio")[0]
         .pause();
       $(this.el)
-        .find(".disk")
-        .removeClass("active");
-      $(this.el)
         .find(".playButton")
         .show();
+      let dTransform = getComputedStyle($(".disk")[0]).transform;
+      let cTransform = getComputedStyle($(".container")[0]).transform;
+      $(".container")[0].style.transform =
+        cTransform === "none" ? dTransform : dTransform.concat(" ", cTransform);
+      $(".disk").removeClass("active");
+    },
+    play() {
+      $(this.el)
+        .find("audio")[0]
+        .play();
+      $(this.el)
+        .find(".playButton")
+        .hide();
+      $(".disk").addClass("active");
     },
     showLyric(time) {
       let allLyric = $(this.el).find(".lyric>.lines>p");
-      
+
       for (let i = 0; i < allLyric.length; i++) {
         let currentTime = allLyric.eq([i]).attr("time-line");
         let nextTime = allLyric.eq([i + 1]).attr("time-line");
@@ -98,7 +98,7 @@
               .removeClass("active");
             $(this.el)
               .find(".lyric>.lines")
-              .css({ transform: `translateY(-${(i - 1) * 7.7295}vw)` });//每次上移动1/3 (实际设备预览发现需要 +1px)的区域高度
+              .css({ transform: `translateY(-${(i - 1) * 7.7295}vw)` }); //每次上移动1/3 (实际设备预览发现需要 +1px)的区域高度
           }
         }
       }
@@ -110,7 +110,7 @@
       status: true
     },
     getSong() {
-      var query = new AV.Query("Song");
+      let query = new AV.Query("Song");
       return query.get(this.data.song.id).then(
         song => {
           Object.assign(this.data.song, song.attributes);
@@ -152,15 +152,18 @@
       this.model.data.song.id = id;
     },
     bindEvents() {
-      $(this.view.el).on("click", ".diskWrap", () => {
-        if (this.model.data.status === false) {
-          this.view.play();
-          this.model.data.status = true;
-        } else {
-          this.view.pause();
-          this.model.data.status = false;
-        }
-      });
+      $(this.view.el)
+        .find(".diskWrap")
+        .on("click", () => {
+          let isPlaying = this.model.data.status;
+          if (isPlaying) {
+            this.view.pause();
+            this.model.data.status = false;
+          } else {
+            this.view.play();
+            this.model.data.status = true;
+          }
+        });
     }
   };
   controller.init(view, model);
