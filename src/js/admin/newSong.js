@@ -6,6 +6,7 @@
       `,
     render(data) {
       $(this.el).html(this.template);
+      
     },
     active() {
       $(this.el).addClass("active");
@@ -13,9 +14,12 @@
     removeActive() {
       $(this.el).removeClass("active");
     }
+    
   };
   let model = {
-    data:{}
+    data:{
+      tags:[]
+    }
   };
   let control = {
     init(view, model) {

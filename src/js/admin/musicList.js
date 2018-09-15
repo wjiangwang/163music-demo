@@ -90,7 +90,6 @@
       });
       window.eventHub.on('updataSongMessage',data=>{
         for(let i=0;i<this.model.data.songs.length;i++){
-          console.log(i)
           if(this.model.data.songs[i].id===data.id){
             this.model.data.songs[i]=data
             this.view.render(this.model.data);
