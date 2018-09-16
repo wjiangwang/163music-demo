@@ -164,10 +164,10 @@ width: 100%;
   width: 33%;
   margin-bottom: 3.8647vw;
 }
-.s1>.sheet>ol>li>img{
+.s1>.sheet>ol>li>a>img{
 width: 100%;
 }
-.s1>.sheet>ol>li>p{
+.s1>.sheet>ol>li>a>p{
   padding: 1.4493vw 0.4831vw 0 1.4493vw;
   text-align: left;
   line-height: 1.2;
@@ -175,6 +175,8 @@ width: 100%;
 }
 
 /*第一 二部分  播放列表 通用*/
+.s2>.list>.loading,
+.s1>.sheet>.loading,
 .s1>.last-music>.loading{
   display:flex;
   justify-content: center;

@@ -31,6 +31,8 @@
     },
     find() {
       var query = new AV.Query("Song");
+      var filter = ['lastMusic'];//条件查询
+      query.containsAll('tags', filter);
       return query.find().then(songs => {
         songs.map(song => {
           this.data.songs.push({ id: song.id, ...song.attributes });

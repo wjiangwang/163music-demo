@@ -148,7 +148,7 @@
           .val();
       });
       this.modle.creatData(data).then(() => {
-        this.view.render({}); //更新数据后清空表单
+        this.view.render({tags:[]}); //更新数据后清空表单
         let string = JSON.stringify(this.modle.data);
         let object = JSON.parse(string); //深拷贝 后 传递 否则会影响
         window.eventHub.emit("creatSongMessage", object);
@@ -182,12 +182,12 @@
         );
       });
 
-      /*this.view.render({}); //更新数据后清空表单
+      this.view.render({}); //更新数据后清空表单
       let string = JSON.stringify(this.modle.data);
       let object = JSON.parse(string); //深拷贝 后 传递 否则会影响
-      window.eventHub.emit('updataSongMessage', object);*/
+      window.eventHub.emit('updataSongMessage', object);
     },
-    remove(){
+   /* remove(){
       let needs = ["songName", "singer", "link", "cover", "lyric"];
       needs.map(string => {
         data[string] = $(this.view.el)
@@ -195,17 +195,14 @@
           .val();
       });
       this.modle.updata(data).then(() => {})
-    },
+    },*/
     bindEvents() {
       $(this.view.el).on("submit", "form", e => {
         e.preventDefault();
         if (this.modle.data.id) {
           this.updata();
-
-          console.log("存在");
         } else {
           this.save();
-          console.log("不存在");
         }
       });
 

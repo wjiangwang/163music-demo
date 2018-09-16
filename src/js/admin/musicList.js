@@ -3,13 +3,6 @@
     el: ".page>aside>.musicList",
     template: `
     <ul>
-        <li>歌曲1</li>
-        <li>歌曲2</li>
-        <li>歌曲3</li>
-        <li>歌曲4</li>
-        <li>歌曲5</li>
-        <li>歌曲6</li>
-        <li>歌曲7</li>
     </ul>
     `,
     render(data) {
@@ -85,6 +78,8 @@
         this.view.removeActive();
       });
       window.eventHub.on("creatSongMessage", data => {
+        console.log('xxxxxxx')
+        console.log(data)
         this.model.data.songs.push(data);
         this.view.render(this.model.data);
       });
