@@ -15,9 +15,18 @@ ol,li{ list-style:none}
   height: 100vh;
 
 }
+.page{
+  height: 100vh;
+}
 .page >aside{
   width: 20%;
   border-right: 1px solid #ddd;
+  overflow: auto;
+  
+}
+.page>aside>.musicList{
+  
+  
 }
 .songMessage{
   flex-direction: column;

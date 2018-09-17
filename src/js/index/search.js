@@ -13,7 +13,6 @@
         </a>
         `,
     render(data) {
-      console.log(data);
       $(".s3 ")
         .find(".hotsearch")
         .hide();
@@ -42,9 +41,10 @@
           .text("没有结果");
       }
       $(".s3")
-      .find(".search-result>.list>a").on('click',()=>{
-        $("#search input").val('')
-      })
+        .find(".search-result>.list>a")
+        .on("click", () => {
+          $("#search input").val("");
+        });
     }
   };
 
@@ -91,10 +91,25 @@
       });
       let timer = undefined;
 
+      let keyword;
+      $(".hotsearch").on("click", "li", x => {
+        $("#search .holder").hide();
+        $(".search>.close").show();
+        keyword = x.currentTarget.innerText;
+        $(this.view.el)
+          .find("input")
+          .val(x.currentTarget.innerText);
+        this.modle.search(keyword).then(result => {
+          $(".s3")
+            .find(".search-result")
+            .show();
+          this.view.render(result);
+        });
+      });
       $("#search input").on("input", e => {
         $("#search .holder").hide();
         $(".search>.close").show();
-        let keyword = $(e.currentTarget)
+        keyword = $(e.currentTarget)
           .val()
           .trim(); //去掉空格
         if (timer) {

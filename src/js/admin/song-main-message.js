@@ -182,7 +182,7 @@
         );
       });
 
-      this.view.render({}); //更新数据后清空表单
+      this.view.render({tags:[]}); //更新数据后清空表单
       let string = JSON.stringify(this.modle.data);
       let object = JSON.parse(string); //深拷贝 后 传递 否则会影响
       window.eventHub.emit('updataSongMessage', object);

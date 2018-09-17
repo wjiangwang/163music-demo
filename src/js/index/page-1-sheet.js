@@ -11,7 +11,6 @@
     `,
     render(data) {
         let { sheets } = data;
-        console.log(sheets)
         sheets.map(sheet=> {
           let $li= $(
             this.template
@@ -19,7 +18,6 @@
               .replace("{{sheet.title}}", sheet.title)
               .replace('{{sheet.id}}',sheet.id)
           );
-          console.log($li)
           $(this.el).find('ol').append($li);
         });
       }

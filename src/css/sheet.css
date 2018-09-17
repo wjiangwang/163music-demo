@@ -10,6 +10,8 @@ ol,li{ list-style:none}
   box-sizing:border-box
 }
 
+a{text-decoration: none; color: #333;}
+
 body{
     font: 14px/1.5 Helvetica,sans-serif;
     background-color:#f8f8f8;
@@ -91,4 +93,48 @@ h3{
     font-size: 2.8986vw;
     color: #666;
     background-color: #eeeff0;
+}
+
+
+.list>.loading{
+  display:flex;
+  justify-content: center;
+ 
+}
+
+.list>a{
+  display: flex;
+  position: relative;
+  padding: 1.4493vw 0;
+  border-bottom: thin solid #ccc;
+  margin-left: 2.4155vw;
+}
+
+.list>a>.song>.song-name{
+  font-size: 4.1063vw;
+}
+
+.list>a>.song>.song-message{
+  display: flex;
+  font-size: 2.8986vw;
+  color: #888;
+  
+}
+.list>a>.icon{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 2.4155vw;
+  position: absolute;
+  right: 0;
+  height: 100%;
+
+}
+
+.list>a>.icon>svg{
+ width: 5.314vw;
+  height: 5.314vw;
+  fill: #ccc;
+  border-radius: 50%;
+
 }
