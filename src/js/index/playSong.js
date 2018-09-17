@@ -98,7 +98,7 @@
               .removeClass("active");
             $(this.el)
               .find(".lyric>.lines")
-              .css({ transform: `translateY(-${(i - 1) * 7.7295}vw)` }); //每次上移动1/3 (实际设备预览发现需要 +1px)的区域高度
+              .css({ transform: `translateY(-${(i - 1) * 7.4879}vw)` }); //每次上移动1/3 (实际设备预览发现需要 +1px)的区域高度
           }
         }
       }
